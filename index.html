@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopzz - Premium Products from Amazon</title>
+    <title>Shopzz - Premium Products from Amazon & Temu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,6 +14,8 @@
             --surface-elevated: #1f1f1f;
             --primary: #e85d04;
             --primary-hover: #f48c06;
+            --amazon: #FF9900;
+            --temu: #ff4757;
             --text-primary: #ffffff;
             --text-secondary: #a3a3a3;
             --text-muted: #525252;
@@ -47,14 +49,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
@@ -79,7 +75,7 @@
             left: 0;
             right: 0;
             height: 72px;
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
@@ -100,7 +96,6 @@
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -109,7 +104,7 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--amazon), var(--temu));
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -151,11 +146,6 @@
             height: 20px;
             cursor: pointer;
             color: var(--text-secondary);
-            transition: color 0.2s;
-        }
-
-        .header-actions svg:hover {
-            color: var(--text-primary);
         }
 
         .cart-btn {
@@ -203,25 +193,22 @@
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--text-primary);
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: 1px solid var(--border);
-            cursor: pointer;
+        .btn-amazon {
+            background: linear-gradient(135deg, #FF9900, #FFB84D);
+            color: #0a0a0a;
         }
 
-        .btn-outline:hover {
-            border-color: var(--text-secondary);
-            background: var(--surface);
+        .btn-amazon:hover {
+            background: linear-gradient(135deg, #FFB84D, #FFCC80);
+        }
+
+        .btn-temu {
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+        }
+
+        .btn-temu:hover {
+            background: linear-gradient(135deg, #ff6b81, #ff8a99);
         }
 
         .hero {
@@ -242,8 +229,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 93, 4, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(232, 93, 4, 0.08), transparent);
+                radial-gradient(ellipse 80% 50% at 30% -10%, rgba(255, 153, 0, 0.12), transparent),
+                radial-gradient(ellipse 60% 40% at 70% 60%, rgba(255, 71, 87, 0.1), transparent);
             pointer-events: none;
         }
 
@@ -253,10 +240,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            opacity: 0.4;
+            opacity: 0.3;
             background-image: radial-gradient(var(--border) 1px, transparent 1px);
             background-size: 40px 40px;
-            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
         }
 
         .hero-content {
@@ -265,22 +251,30 @@
             max-width: 700px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            color: var(--text-secondary);
+        .hero-stores {
+            display: flex;
+            gap: 12px;
             margin-bottom: 24px;
         }
 
-        .hero-badge span {
-            color: var(--primary);
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
             font-weight: 600;
+        }
+
+        .amazon-badge {
+            background: rgba(255, 153, 0, 0.15);
+            color: #FF9900;
+        }
+
+        .temu-badge {
+            background: rgba(255, 71, 87, 0.15);
+            color: #ff4757;
         }
 
         .hero h1 {
@@ -293,7 +287,9 @@
         }
 
         .hero h1 span {
-            color: var(--primary);
+            background: linear-gradient(135deg, #FF9900, #ff4757);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -316,10 +312,6 @@
             margin-top: 64px;
             padding-top: 32px;
             border-top: 1px solid var(--border);
-        }
-
-        .stat {
-            text-align: left;
         }
 
         .stat-number {
@@ -349,21 +341,21 @@
             margin-bottom: 24px;
         }
 
-        .trusted-logos {
+        .store-logos {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 48px;
-            flex-wrap: wrap;
-            opacity: 0.5;
         }
 
-        .trusted-logo {
+        .store-logo {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text-secondary);
         }
+
+        .amazon-logo { color: #FF9900; }
+        .temu-logo { color: #ff4757; }
 
         .categories {
             padding: 64px 0;
@@ -382,6 +374,34 @@
             font-weight: 600;
             letter-spacing: -1px;
         }
+
+        .store-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--surface);
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .store-tab {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .store-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .store-tab.amazon.active { background: #FF9900; color: #0a0a0a; }
+        .store-tab.temu.active { background: #ff4757; color: white; }
 
         .category-pills {
             display: flex;
@@ -412,13 +432,9 @@
             color: white;
         }
 
-        .products-section {
-            padding: 0 0 64px;
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
@@ -454,19 +470,27 @@
             transform: scale(1.08);
         }
 
-        .amazon-badge {
+        .store-tag {
             position: absolute;
             top: 12px;
             left: 12px;
-            background: rgba(10, 10, 10, 0.8);
             padding: 6px 10px;
             border-radius: 4px;
             font-size: 10px;
-            font-weight: 600;
-            color: #FF9900;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 4px;
+        }
+
+        .store-tag.amazon {
+            background: #FF9900;
+            color: #0a0a0a;
+        }
+
+        .store-tag.temu {
+            background: #ff4757;
+            color: white;
         }
 
         .product-info {
@@ -489,7 +513,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .current-price {
@@ -508,25 +532,43 @@
         .price-zar {
             font-size: 12px;
             color: var(--text-muted);
+            margin-bottom: 12px;
         }
 
-        .view-on-amazon {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #FF9900, #FFB84D);
-            color: #0a0a0a;
+        .shop-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .shop-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
             text-align: center;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 14px;
             text-decoration: none;
             transition: all 0.2s;
         }
 
-        .view-on-amazon:hover {
+        .shop-btn.amazon {
+            background: linear-gradient(135deg, #FF9900, #FFB84D);
+            color: #0a0a0a;
+        }
+
+        .shop-btn.amazon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(255, 153, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+        }
+
+        .shop-btn.temu {
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+        }
+
+        .shop-btn.temu:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
         }
 
         .cart-overlay {
@@ -588,9 +630,6 @@
             background: var(--surface-elevated);
             border: none;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .close-cart svg {
@@ -668,13 +707,26 @@
             font-size: 16px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
+
+        .cart-item-store {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .cart-item-store.amazon { background: rgba(255,153,0,0.2); color: #FF9900; }
+        .cart-item-store.temu { background: rgba(255,71,87,0.2); color: #ff4757; }
 
         .cart-item-link {
             font-size: 12px;
-            color: #FF9900;
+            color: var(--primary);
             text-decoration: none;
+            margin-top: auto;
         }
 
         .cart-footer {
@@ -696,27 +748,16 @@
             margin-bottom: 8px;
         }
 
-        .cart-info a {
-            color: #FF9900;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
         .checkout-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #FF9900, #FFB84D);
-            color: #0a0a0a;
+            background: linear-gradient(135deg, #FF9900, #ff4757);
+            color: white;
             border: none;
             border-radius: 8px;
             font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .checkout-btn:hover {
-            transform: scale(1.02);
         }
 
         .toast {
@@ -756,25 +797,9 @@
             padding: 100px 0;
             background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(232, 93, 4, 0.15) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .cta-content {
-            position: relative;
-            z-index: 1;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -784,7 +809,6 @@
             font-size: 40px;
             font-weight: 700;
             margin-bottom: 16px;
-            letter-spacing: -1px;
         }
 
         .cta-content p {
@@ -808,7 +832,6 @@
 
         .footer-brand .logo {
             margin-bottom: 20px;
-            display: inline-flex;
         }
 
         .footer-brand p {
@@ -817,22 +840,6 @@
             line-height: 1.7;
             max-width: 280px;
             margin-bottom: 24px;
-        }
-
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .footer-contact a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer-contact a:hover {
-            color: var(--primary);
         }
 
         .footer-column h4 {
@@ -881,11 +888,6 @@
             color: var(--text-muted);
         }
 
-        .newsletter-form input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
         .newsletter-form button {
             padding: 12px 20px;
             background: var(--primary);
@@ -896,46 +898,10 @@
             cursor: pointer;
         }
 
-        .newsletter-form button:hover {
-            background: var(--primary-hover);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: var(--surface-elevated);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-        }
-
-        .social-links svg {
-            width: 18px;
-            height: 18px;
-            color: var(--text-secondary);
-        }
-
-        .social-links a:hover svg {
-            color: white;
-        }
-
         .footer-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             padding-top: 32px;
             border-top: 1px solid var(--border);
+            text-align: center;
         }
 
         .footer-bottom p {
@@ -951,84 +917,27 @@
 
         @media (max-width: 1024px) {
             .products-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
-
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero-stats {
-                gap: 32px;
-            }
-
-            .stat-number {
-                font-size: 28px;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn-primary,
-            .hero-buttons .btn-outline {
-                width: 100%;
-                justify-content: center;
-            }
+            nav { display: none; }
+            .hero h1 { font-size: 40px; }
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+            .section-header { flex-direction: column; gap: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .shop-buttons { flex-direction: column; }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cart-sidebar {
-                width: 100%;
-            }
+            .container { padding: 0 16px; }
+            .hero h1 { font-size: 32px; }
+            .cart-sidebar { width: 100%; }
         }
     </style>
 </head>
@@ -1049,9 +958,6 @@
                 <a href="#cta">Contact</a>
             </nav>
             <div class="header-actions">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
                 <div class="cart-btn" id="cartBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -1066,33 +972,20 @@
         <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge animate-in">
-                    <span>Amazon Affiliate</span> Premium Products
+                <div class="hero-stores animate-in">
+                    <span class="store-badge amazon-badge">★ Amazon</span>
+                    <span class="store-badge temu-badge">★ Temu</span>
                 </div>
                 <h1 class="animate-in delay-1">Discover Your <span>Style</span></h1>
-                <p class="animate-in delay-2">Curated premium products from Amazon with exclusive deals. Shop now and save with our tracked affiliate links.</p>
+                <p class="animate-in delay-2">Curated premium products from Amazon & Temu with the best deals. Shop smart with our tracked affiliate links.</p>
                 <div class="hero-buttons animate-in delay-3">
-                    <a href="#products" class="btn-primary">
-                        Shop Now
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
+                    <a href="#products" class="btn-primary">Shop Now →</a>
                     <a href="#cta" class="btn-outline">Contact Us</a>
                 </div>
                 <div class="hero-stats animate-in delay-4">
-                    <div class="stat">
-                        <div class="stat-number">10K+</div>
-                        <div class="stat-label">Happy Customers</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Products</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">4.9</div>
-                        <div class="stat-label">Rating</div>
-                    </div>
+                    <div><div class="stat-number">10K+</div><div class="stat-label">Happy Customers</div></div>
+                    <div><div class="stat-number">500+</div><div class="stat-label">Products</div></div>
+                    <div><div class="stat-number">2</div><div class="stat-label">Stores</div></div>
                 </div>
             </div>
         </div>
@@ -1100,13 +993,10 @@
 
     <section class="trusted-section">
         <div class="container">
-            <p class="trusted-label">Powered by Amazon</p>
-            <div class="trusted-logos">
-                <span class="trusted-logo">PRIME</span>
-                <span class="trusted-logo">AWS</span>
-                <span class="trusted-logo">KINDLE</span>
-                <span class="trusted-logo">FIRE TV</span>
-                <span class="trusted-logo">ECHO</span>
+            <p class="trusted-label">Powered By</p>
+            <div class="store-logos">
+                <span class="store-logo amazon-logo">amazon</span>
+                <span class="store-logo temu-logo">temu</span>
             </div>
         </div>
     </section>
@@ -1115,13 +1005,17 @@
         <div class="container">
             <div class="section-header">
                 <h2>Featured Products</h2>
-                <div class="category-pills" id="categoryPills">
-                    <button class="category-pill active" data-category="all">All</button>
-                    <button class="category-pill" data-category="electronics">Electronics</button>
-                    <button class="category-pill" data-category="clothing">Clothing</button>
-                    <button class="category-pill" data-category="accessories">Accessories</button>
-                    <button class="category-pill" data-category="home">Home</button>
+                <div class="store-tabs">
+                    <button class="store-tab amazon active" data-store="amazon">Amazon</button>
+                    <button class="store-tab temu" data-store="temu">Temu</button>
                 </div>
+            </div>
+            <div class="category-pills" id="categoryPills" style="margin-bottom: 32px;">
+                <button class="category-pill active" data-category="all">All</button>
+                <button class="category-pill" data-category="electronics">Electronics</button>
+                <button class="category-pill" data-category="clothing">Clothing</button>
+                <button class="category-pill" data-category="accessories">Accessories</button>
+                <button class="category-pill" data-category="home">Home</button>
             </div>
             <div class="products-grid" id="productsGrid"></div>
         </div>
@@ -1131,13 +1025,8 @@
         <div class="container">
             <div class="cta-content animate-in">
                 <h2>Need Help Finding Products?</h2>
-                <p>Contact us for personalized product recommendations tailored to your needs.</p>
-                <a href="mailto:contact@shopzz.com" class="btn-primary">
-                    Get in Touch
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
+                <p>Contact us for personalized product recommendations from Amazon or Temu.</p>
+                <a href="mailto:contact@shopzz.com" class="btn-primary">Get in Touch →</a>
             </div>
         </div>
     </section>
@@ -1147,33 +1036,26 @@
         <div class="cart-header">
             <h3>Your Wishlist</h3>
             <button class="close-cart" id="closeCart">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
         <div class="cart-items" id="cartItems">
             <div class="cart-empty" id="cartEmpty">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
                 <h4>Your wishlist is empty</h4>
-                <p>Add products to buy later!</p>
+                <p>Add products to compare prices!</p>
             </div>
         </div>
         <div class="cart-footer" id="cartFooter" style="display: none;">
             <div class="cart-info">
-                <p>You'll be redirected to Amazon to complete your purchase</p>
-                <a href="https://www.amazon.com" target="_blank">Shop on Amazon</a>
+                <p>Compare prices between Amazon & Temu</p>
             </div>
-            <button class="checkout-btn" onclick="checkoutAmazon()">Buy All on Amazon</button>
+            <button class="checkout-btn" onclick="checkoutAll()">View All on Stores</button>
         </div>
     </aside>
 
     <div class="toast" id="toast">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
         <span id="toastMessage">Added to wishlist!</span>
     </div>
 
@@ -1183,37 +1065,19 @@
                 <div class="footer-brand">
                     <a href="#" class="logo">
                         <div class="logo-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
                         </div>
                         shopzz
                     </a>
-                    <p>Your trusted destination for premium Amazon products. We curate the best deals for you.</p>
-                    <div class="footer-contact">
-                        <a href="mailto:contact@shopzz.com">contact@shopzz.com</a>
-                    </div>
-                    <div class="social-links">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                    </div>
-                    <p class="affiliate-disclaimer">As an Amazon Associate, we earn from qualifying purchases.</p>
+                    <p>Your trusted destination for premium products from Amazon & Temu. Compare prices and save big!</p>
                 </div>
                 <div class="footer-column">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="#">All Products</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Amazon Products</a></li>
+                        <li><a href="#">Temu Products</a></li>
                         <li><a href="#">Deals</a></li>
+                        <li><a href="#">New Arrivals</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1235,31 +1099,38 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Shopzz. Amazon Associates Affiliate.</p>
+                <p>&copy; 2026 Shopzz. Amazon & Temu Affiliate.</p>
+                <p class="affiliate-disclaimer">As an Amazon & Temu Associate, we earn from qualifying purchases.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        const AFFILIATE_TAG = 'compar101-20';
+        const AMAZON_TAG = 'compar101-20';
+        const TEMU_CODE = 'ehuhzwk9082';
         const USD_TO_ZAR = 18.5;
 
         const products = [
-            { id: 1, name: "Sony WH-1000XM5 Wireless Headphones", price: 299, originalPrice: 399, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop", category: "electronics", asin: "B09XS7JWHH" },
-            { id: 2, name: "Apple Watch Series 9 GPS 45mm", price: 329, originalPrice: 429, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop", category: "electronics", asin: "B0CHWQH6H8" },
-            { id: 3, name: "Bose QuietComfort Ultra Headphones", price: 349, originalPrice: 449, image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop", category: "electronics", asin: "B0C8S5GMK7" },
-            { id: 4, name: "Samsung Galaxy Watch 6 Classic", price: 279, originalPrice: 349, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", asin: "B0C47J3K5Z" },
-            { id: 5, name: "Nike Air Max 270 Running Shoes", price: 109, originalPrice: 149, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop", category: "clothing", asin: "B09RM5XT9P" },
-            { id: 6, name: "Levi's 501 Original Fit Jeans", price: 59, originalPrice: 79, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop", category: "clothing", asin: "B07FY5stRY" },
-            { id: 7, name: "The North Face Puffer Jacket", price: 199, originalPrice: 279, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop", category: "clothing", asin: "B0B3Y3Y8MZ" },
-            { id: 8, name: "Ray-Ban Classic Wayfarer Sunglasses", price: 149, originalPrice: 179, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop", category: "accessories", asin: "B00N45B0R0" },
-            { id: 9, name: "Casio G-Shock Watch DW5600", price: 75, originalPrice: 95, image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=600&fit=crop", category: "accessories", asin: "B000G3QOTG" },
-            { id: 10, name: "Herman Miller Aeron Chair", price: 1395, originalPrice: 1695, image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&h=600&fit=crop", category: "home", asin: "B09FB2MZ87" },
-            { id: 11, name: "Dyson V15 Detect Vacuum", price: 599, originalPrice: 749, image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop", category: "home", asin: "B0B8L1N3VZ" },
-            { id: 12, name: "Ninja Foodi Air Fryer 8-Quart", price: 169, originalPrice: 229, image: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=600&h=600&fit=crop", category: "home", asin: "B09HTRXX8Y" }
+            // Amazon Products
+            { id: 1, name: "Sony WH-1000XM5 Wireless Headphones", price: 299, originalPrice: 399, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B09XS7JWHH", url: "https://www.amazon.com/dp/B09XS7JWHH" },
+            { id: 2, name: "Apple Watch Series 9 GPS 45mm", price: 329, originalPrice: 429, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0CHWQH6H8", url: "https://www.amazon.com/dp/B0CHWQH6H8" },
+            { id: 3, name: "Bose QuietComfort Ultra Headphones", price: 349, originalPrice: 449, image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0C8S5GMK7", url: "https://www.amazon.com/dp/B0C8S5GMK7" },
+            { id: 4, name: "Samsung Galaxy Watch 6 Classic", price: 279, originalPrice: 349, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0C47J3K5Z", url: "https://www.amazon.com/dp/B0C47J3K5Z" },
+            { id: 5, name: "Nike Air Max 270 Running Shoes", price: 109, originalPrice: 149, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop", category: "clothing", store: "amazon", asin: "B09RM5XT9P", url: "https://www.amazon.com/dp/B09RM5XT9P" },
+            { id: 6, name: "Levi's 501 Original Fit Jeans", price: 59, originalPrice: 79, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop", category: "clothing", store: "amazon", asin: "B07FY5stRY", url: "https://www.amazon.com/dp/B07FY5stRY" },
+            
+            // Temu Products (lower prices)
+            { id: 101, name: "Wireless Bluetooth Earbuds Pro", price: 29, originalPrice: 59, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=600&fit=crop", category: "electronics", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 102, name: "Smart Fitness Tracker Watch", price: 25, originalPrice: 49, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 103, name: "Vintage Polarized Sunglasses", price: 15, originalPrice: 35, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop", category: "accessories", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 104, name: "Cotton Hoodie Casual Wear", price: 22, originalPrice: 45, image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop", category: "clothing", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 105, name: "Minimalist Desk Clock", price: 18, originalPrice: 36, image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=600&h=600&fit=crop", category: "home", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 106, name: "LED Desk Lamp Adjustable", price: 24, originalPrice: 48, image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=600&fit=crop", category: "home", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
         ];
 
         let cart = [];
+        let currentStore = 'amazon';
+        let currentCategory = 'all';
 
         const productsGrid = document.getElementById('productsGrid');
         const cartBtn = document.getElementById('cartBtn');
@@ -1273,30 +1144,31 @@
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
         const categoryPills = document.getElementById('categoryPills');
+        const storeTabs = document.querySelectorAll('.store-tab');
 
         function formatZAR(usd) {
             return 'R ' + Math.round(usd * USD_TO_ZAR).toLocaleString('en-ZA');
         }
 
-        function getAmazonLink(asin) {
-            return `https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}`;
+        function getAmazonLink(product) {
+            return product.url + `?tag=${AMAZON_TAG}`;
         }
 
-        function renderProducts(filter = 'all') {
-            const filteredProducts = filter === 'all' 
-                ? products 
-                : products.filter(p => p.category === filter);
+        function getTemuLink() {
+            return `https://temu.com/k/${TEMU_CODE}`;
+        }
 
-            productsGrid.innerHTML = filteredProducts.map((product, index) => `
+        function renderProducts() {
+            let filtered = products.filter(p => p.store === currentStore);
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+
+            productsGrid.innerHTML = filtered.map((product, index) => `
                 <div class="product-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" loading="lazy">
-                        <div class="amazon-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#FF9900" viewBox="0 0 24 24">
-                                <path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.3l8.2 4.7v9.9L12 21.7l-8.2-4.8V7l8.2-4.7z"/>
-                            </svg>
-                            Prime
-                        </div>
+                        <span class="store-tag ${product.store}">${product.store === 'amazon' ? '★ Amazon' : '★ Temu'}</span>
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
@@ -1305,9 +1177,11 @@
                             ${product.originalPrice ? `<span class="original-price">${formatZAR(product.originalPrice)}</span>` : ''}
                         </div>
                         <span class="price-zar">USD $${product.price}</span>
-                        <a href="${getAmazonLink(product.asin)}" target="_blank" class="view-on-amazon" onclick="addToCart(${product.id})">
-                            Buy on Amazon
-                        </a>
+                        <div class="shop-buttons">
+                            <a href="${product.store === 'amazon' ? getAmazonLink(product) : getTemuLink()}" target="_blank" class="shop-btn ${product.store}" onclick="addToCart(${product.id})">
+                                ${product.store === 'amazon' ? 'Buy on Amazon' : 'Buy on Temu'}
+                            </a>
+                        </div>
                     </div>
                 </div>
             `).join('');
@@ -1324,7 +1198,7 @@
             }
 
             updateCartUI();
-            showToast(`${product.name} added to wishlist!`);
+            showToast(`${product.name} added!`);
             animateCartBadge();
         }
 
@@ -1344,33 +1218,30 @@
 
         function renderCartItems() {
             const itemsHtml = cart.map(item => `
-                <div class="cart-item" data-id="${item.id}">
-                    <div class="cart-item-image">
-                        <img src="${item.image}" alt="${item.name}">
-                    </div>
+                <div class="cart-item">
+                    <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
                     <div class="cart-item-details">
                         <h4 class="cart-item-name">${item.name}</h4>
                         <span class="cart-item-price">${formatZAR(item.price * item.quantity)}</span>
-                        <a href="${getAmazonLink(item.asin)}" target="_blank" class="cart-item-link">View on Amazon →</a>
+                        <span class="cart-item-store ${item.store}">${item.store.toUpperCase()}</span>
+                        <a href="${item.store === 'amazon' ? getAmazonLink(item) : getTemuLink()}" target="_blank" class="cart-item-link">View on ${item.store === 'amazon' ? 'Amazon' : 'Temu'} →</a>
                     </div>
                 </div>
             `).join('');
-
-            const emptyCart = cartEmpty.outerHTML;
-            cartItems.innerHTML = cart.length === 0 ? emptyCart : itemsHtml;
+            cartItems.innerHTML = itemsHtml;
         }
 
-        function checkoutAmazon() {
+        function checkoutAll() {
             if (cart.length === 0) return;
+            const amazonItem = cart.find(i => i.store === 'amazon');
+            const temuItem = cart.find(i => i.store === 'temu');
             
-            const amazonLinks = cart.map(item => getAmazonLink(item.asin)).join('\n');
+            let msg = 'Opening stores...\n';
+            if (amazonItem) msg += 'Amazon: ' + getAmazonLink(amazonItem) + '\n';
+            if (temuItem) msg += 'Temu: ' + getTemuLink() + '\n';
+            alert(msg);
             
-            if (cart.length === 1) {
-                window.open(getAmazonLink(cart[0].asin), '_blank');
-            } else {
-                alert('Multiple items in wishlist! Opening first item on Amazon.\n\nAll Amazon links:\n' + amazonLinks);
-                window.open(getAmazonLink(cart[0].asin), '_blank');
-            }
+            if (amazonItem) window.open(getAmazonLink(amazonItem), '_blank');
         }
 
         function animateCartBadge() {
@@ -1382,9 +1253,7 @@
         function showToast(message) {
             toastMessage.textContent = message;
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
         function openCart() {
@@ -1403,11 +1272,21 @@
         closeCart.addEventListener('click', closeCartFunc);
         cartOverlay.addEventListener('click', closeCartFunc);
 
+        storeTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                storeTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentStore = tab.dataset.store;
+                renderProducts();
+            });
+        });
+
         categoryPills.addEventListener('click', (e) => {
             if (e.target.classList.contains('category-pill')) {
-                document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+                categoryPills.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
                 e.target.classList.add('active');
-                renderProducts(e.target.dataset.category);
+                currentCategory = e.target.dataset.category;
+                renderProducts();
             }
         });
 
