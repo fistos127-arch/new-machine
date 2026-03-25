@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopzz - Discover Your Style</title>
+    <title>Shopzz - Premium Products from Amazon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -62,11 +62,6 @@
             50% { transform: scale(1.15); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
         .animate-in {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
@@ -78,7 +73,6 @@
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
 
-        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -140,7 +134,6 @@
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
-            position: relative;
         }
 
         nav a:hover {
@@ -231,7 +224,6 @@
             background: var(--surface);
         }
 
-        /* Hero Section */
         .hero {
             margin-top: 72px;
             min-height: calc(100vh - 72px);
@@ -342,7 +334,6 @@
             color: var(--text-muted);
         }
 
-        /* Trusted By */
         .trusted-section {
             padding: 48px 0;
             border-top: 1px solid var(--border);
@@ -372,14 +363,8 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--text-secondary);
-            transition: opacity 0.2s;
         }
 
-        .trusted-logo:hover {
-            opacity: 1;
-        }
-
-        /* Categories */
         .categories {
             padding: 64px 0;
         }
@@ -427,7 +412,6 @@
             color: white;
         }
 
-        /* Products */
         .products-section {
             padding: 0 0 64px;
         }
@@ -470,65 +454,19 @@
             transform: scale(1.08);
         }
 
-        .wishlist-btn {
+        .amazon-badge {
             position: absolute;
             top: 12px;
-            right: 12px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+            left: 12px;
             background: rgba(10, 10, 10, 0.8);
-            border: none;
-            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            color: #FF9900;
             display: flex;
             align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.2s;
-        }
-
-        .product-card:hover .wishlist-btn {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .wishlist-btn svg {
-            width: 18px;
-            height: 18px;
-            color: var(--text-secondary);
-            transition: color 0.2s;
-        }
-
-        .wishlist-btn:hover svg {
-            color: var(--primary);
-        }
-
-        .add-to-cart {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            padding: 12px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.2s;
-        }
-
-        .product-card:hover .add-to-cart {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .add-to-cart:hover {
-            background: var(--primary-hover);
+            gap: 4px;
         }
 
         .product-info {
@@ -551,11 +489,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 12px;
         }
 
         .current-price {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--primary);
         }
@@ -566,7 +505,30 @@
             text-decoration: line-through;
         }
 
-        /* Cart Sidebar */
+        .price-zar {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .view-on-amazon {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #FF9900, #FFB84D);
+            color: #0a0a0a;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .view-on-amazon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 153, 0, 0.3);
+        }
+
         .cart-overlay {
             position: fixed;
             top: 0;
@@ -629,11 +591,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .close-cart:hover {
-            background: var(--border);
         }
 
         .close-cart svg {
@@ -704,9 +661,6 @@
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
         .cart-item-price {
@@ -717,56 +671,10 @@
             margin-bottom: 8px;
         }
 
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .qty-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            background: var(--surface-elevated);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .qty-btn:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .qty-value {
-            font-weight: 600;
-            min-width: 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .remove-item {
-            margin-left: auto;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .remove-item svg {
-            width: 16px;
-            height: 16px;
-            color: var(--text-muted);
-            transition: color 0.2s;
-        }
-
-        .remove-item:hover svg {
-            color: #ef4444;
+        .cart-item-link {
+            font-size: 12px;
+            color: #FF9900;
+            text-decoration: none;
         }
 
         .cart-footer {
@@ -774,40 +682,43 @@
             border-top: 1px solid var(--border);
         }
 
-        .cart-subtotal {
-            display: flex;
-            justify-content: space-between;
+        .cart-info {
+            text-align: center;
             margin-bottom: 20px;
+            padding: 16px;
+            background: var(--surface-elevated);
+            border-radius: 8px;
         }
 
-        .cart-subtotal span:first-child {
+        .cart-info p {
+            font-size: 13px;
             color: var(--text-secondary);
+            margin-bottom: 8px;
         }
 
-        .cart-subtotal span:last-child {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
+        .cart-info a {
+            color: #FF9900;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         .checkout-btn {
             width: 100%;
             padding: 16px;
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, #FF9900, #FFB84D);
+            color: #0a0a0a;
             border: none;
             border-radius: 8px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .checkout-btn:hover {
-            background: var(--primary-hover);
+            transform: scale(1.02);
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -841,7 +752,6 @@
             font-size: 14px;
         }
 
-        /* CTA Section */
         .cta-section {
             padding: 100px 0;
             background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
@@ -883,7 +793,6 @@
             margin-bottom: 32px;
         }
 
-        /* Footer */
         footer {
             background: var(--surface);
             border-top: 1px solid var(--border);
@@ -920,7 +829,6 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s;
         }
 
         .footer-contact a:hover {
@@ -934,7 +842,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
-            color: var(--text-primary);
         }
 
         .footer-column ul {
@@ -949,7 +856,6 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s;
         }
 
         .footer-column a:hover {
@@ -988,7 +894,6 @@
             color: white;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
         .newsletter-form button:hover {
@@ -1009,7 +914,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
         }
 
         .social-links a:hover {
@@ -1039,7 +943,12 @@
             font-size: 13px;
         }
 
-        /* Responsive */
+        .affiliate-disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
         @media (max-width: 1024px) {
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -1124,7 +1033,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <a href="#" class="logo">
@@ -1154,16 +1062,15 @@
         </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge animate-in">
-                    <span>New</span> Premium collection now available
+                    <span>Amazon Affiliate</span> Premium Products
                 </div>
                 <h1 class="animate-in delay-1">Discover Your <span>Style</span></h1>
-                <p class="animate-in delay-2">Explore our curated collection of premium products designed to elevate your lifestyle. Quality meets style at Shopzz.</p>
+                <p class="animate-in delay-2">Curated premium products from Amazon with exclusive deals. Shop now and save with our tracked affiliate links.</p>
                 <div class="hero-buttons animate-in delay-3">
                     <a href="#products" class="btn-primary">
                         Shop Now
@@ -1171,7 +1078,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </a>
-                    <a href="#cta" class="btn-outline">Get in Touch</a>
+                    <a href="#cta" class="btn-outline">Contact Us</a>
                 </div>
                 <div class="hero-stats animate-in delay-4">
                     <div class="stat">
@@ -1191,21 +1098,19 @@
         </div>
     </section>
 
-    <!-- Trusted By -->
     <section class="trusted-section">
         <div class="container">
-            <p class="trusted-label">Trusted by Leading Brands</p>
+            <p class="trusted-label">Powered by Amazon</p>
             <div class="trusted-logos">
-                <span class="trusted-logo">SONY</span>
-                <span class="trusted-logo">SAMSUNG</span>
-                <span class="trusted-logo">APPLE</span>
-                <span class="trusted-logo">NIKE</span>
-                <span class="trusted-logo">ADIDAS</span>
+                <span class="trusted-logo">PRIME</span>
+                <span class="trusted-logo">AWS</span>
+                <span class="trusted-logo">KINDLE</span>
+                <span class="trusted-logo">FIRE TV</span>
+                <span class="trusted-logo">ECHO</span>
             </div>
         </div>
     </section>
 
-    <!-- Categories -->
     <section class="categories" id="products">
         <div class="container">
             <div class="section-header">
@@ -1222,12 +1127,11 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section" id="cta">
         <div class="container">
             <div class="cta-content animate-in">
-                <h2>Ready to elevate your style?</h2>
-                <p>Get in touch with our team for personalized recommendations and exclusive offers.</p>
+                <h2>Need Help Finding Products?</h2>
+                <p>Contact us for personalized product recommendations tailored to your needs.</p>
                 <a href="mailto:contact@shopzz.com" class="btn-primary">
                     Get in Touch
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1238,11 +1142,10 @@
         </div>
     </section>
 
-    <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <aside class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h3>Your Cart</h3>
+            <h3>Your Wishlist</h3>
             <button class="close-cart" id="closeCart">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -1254,28 +1157,26 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
-                <h4>Your cart is empty</h4>
-                <p>Add some products to get started!</p>
+                <h4>Your wishlist is empty</h4>
+                <p>Add products to buy later!</p>
             </div>
         </div>
         <div class="cart-footer" id="cartFooter" style="display: none;">
-            <div class="cart-subtotal">
-                <span>Subtotal</span>
-                <span id="cartTotal">$0</span>
+            <div class="cart-info">
+                <p>You'll be redirected to Amazon to complete your purchase</p>
+                <a href="https://www.amazon.com" target="_blank">Shop on Amazon</a>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <button class="checkout-btn" onclick="checkoutAmazon()">Buy All on Amazon</button>
         </div>
     </aside>
 
-    <!-- Toast -->
     <div class="toast" id="toast">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
-        <span id="toastMessage">Product added to cart!</span>
+        <span id="toastMessage">Added to wishlist!</span>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1288,7 +1189,7 @@
                         </div>
                         shopzz
                     </a>
-                    <p>Your destination for premium products. We curate the best to bring you the finest shopping experience.</p>
+                    <p>Your trusted destination for premium Amazon products. We curate the best deals for you.</p>
                     <div class="footer-contact">
                         <a href="mailto:contact@shopzz.com">contact@shopzz.com</a>
                     </div>
@@ -1303,12 +1204,8 @@
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
                     </div>
+                    <p class="affiliate-disclaimer">As an Amazon Associate, we earn from qualifying purchases.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Shop</h4>
@@ -1316,7 +1213,7 @@
                         <li><a href="#">All Products</a></li>
                         <li><a href="#">New Arrivals</a></li>
                         <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">Deals</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1330,33 +1227,36 @@
                 </div>
                 <div class="footer-column">
                     <h4>Newsletter</h4>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Subscribe to get special offers and updates.</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Get special offers and updates.</p>
                     <form class="newsletter-form" onsubmit="return false;">
-                        <input type="email" placeholder="Enter your email">
+                        <input type="email" placeholder="Your email">
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Shopzz. All rights reserved.</p>
+                <p>&copy; 2026 Shopzz. Amazon Associates Affiliate.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        const AFFILIATE_TAG = 'compar101-20';
+        const USD_TO_ZAR = 18.5;
+
         const products = [
-            { id: 1, name: "Wireless Noise-Cancelling Headphones", price: 299, originalPrice: 349, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop", category: "electronics" },
-            { id: 2, name: "Minimalist Analog Watch", price: 189, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop", category: "accessories" },
-            { id: 3, name: "Premium Leather Backpack", price: 159, originalPrice: 199, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=600&fit=crop", category: "accessories" },
-            { id: 4, name: "Smart Fitness Tracker", price: 129, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics" },
-            { id: 5, name: "Cotton Blend Hoodie", price: 79, image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop", category: "clothing" },
-            { id: 6, name: "Ceramic Vase Set", price: 89, image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=600&h=600&fit=crop", category: "home" },
-            { id: 7, name: "Wireless Earbuds Pro", price: 199, originalPrice: 249, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=600&fit=crop", category: "electronics" },
-            { id: 8, name: "Classic Denim Jacket", price: 119, image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&h=600&fit=crop", category: "clothing" },
-            { id: 9, name: "Scented Soy Candle Collection", price: 45, image: "https://images.unsplash.com/photo-1602607434640-bce8c9e5d45a?w=600&h=600&fit=crop", category: "home" },
-            { id: 10, name: "Polarized Sunglasses", price: 149, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop", category: "accessories" },
-            { id: 11, name: "Cashmere Sweater", price: 229, originalPrice: 279, image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=600&fit=crop", category: "clothing" },
-            { id: 12, name: "Smart Home Speaker", price: 179, image: "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=600&h=600&fit=crop", category: "electronics" }
+            { id: 1, name: "Sony WH-1000XM5 Wireless Headphones", price: 299, originalPrice: 399, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop", category: "electronics", asin: "B09XS7JWHH" },
+            { id: 2, name: "Apple Watch Series 9 GPS 45mm", price: 329, originalPrice: 429, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop", category: "electronics", asin: "B0CHWQH6H8" },
+            { id: 3, name: "Bose QuietComfort Ultra Headphones", price: 349, originalPrice: 449, image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop", category: "electronics", asin: "B0C8S5GMK7" },
+            { id: 4, name: "Samsung Galaxy Watch 6 Classic", price: 279, originalPrice: 349, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", asin: "B0C47J3K5Z" },
+            { id: 5, name: "Nike Air Max 270 Running Shoes", price: 109, originalPrice: 149, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop", category: "clothing", asin: "B09RM5XT9P" },
+            { id: 6, name: "Levi's 501 Original Fit Jeans", price: 59, originalPrice: 79, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop", category: "clothing", asin: "B07FY5stRY" },
+            { id: 7, name: "The North Face Puffer Jacket", price: 199, originalPrice: 279, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop", category: "clothing", asin: "B0B3Y3Y8MZ" },
+            { id: 8, name: "Ray-Ban Classic Wayfarer Sunglasses", price: 149, originalPrice: 179, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop", category: "accessories", asin: "B00N45B0R0" },
+            { id: 9, name: "Casio G-Shock Watch DW5600", price: 75, originalPrice: 95, image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=600&fit=crop", category: "accessories", asin: "B000G3QOTG" },
+            { id: 10, name: "Herman Miller Aeron Chair", price: 1395, originalPrice: 1695, image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600&h=600&fit=crop", category: "home", asin: "B09FB2MZ87" },
+            { id: 11, name: "Dyson V15 Detect Vacuum", price: 599, originalPrice: 749, image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&h=600&fit=crop", category: "home", asin: "B0B8L1N3VZ" },
+            { id: 12, name: "Ninja Foodi Air Fryer 8-Quart", price: 169, originalPrice: 229, image: "https://images.unsplash.com/photo-1585515320310-259814833e62?w=600&h=600&fit=crop", category: "home", asin: "B09HTRXX8Y" }
         ];
 
         let cart = [];
@@ -1370,10 +1270,17 @@
         const cartEmpty = document.getElementById('cartEmpty');
         const cartFooter = document.getElementById('cartFooter');
         const cartBadge = document.getElementById('cartBadge');
-        const cartTotal = document.getElementById('cartTotal');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
         const categoryPills = document.getElementById('categoryPills');
+
+        function formatZAR(usd) {
+            return 'R ' + Math.round(usd * USD_TO_ZAR).toLocaleString('en-ZA');
+        }
+
+        function getAmazonLink(asin) {
+            return `https://www.amazon.com/dp/${asin}?tag=${AFFILIATE_TAG}`;
+        }
 
         function renderProducts(filter = 'all') {
             const filteredProducts = filter === 'all' 
@@ -1384,19 +1291,23 @@
                 <div class="product-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" loading="lazy">
-                        <button class="wishlist-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        <div class="amazon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#FF9900" viewBox="0 0 24 24">
+                                <path d="M12 0L1.5 6v12L12 24l10.5-6V6L12 0zm0 2.3l8.2 4.7v9.9L12 21.7l-8.2-4.8V7l8.2-4.7z"/>
                             </svg>
-                        </button>
-                        <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                            Prime
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
                         <div class="product-price">
-                            <span class="current-price">$${product.price}</span>
-                            ${product.originalPrice ? `<span class="original-price">$${product.originalPrice}</span>` : ''}
+                            <span class="current-price">${formatZAR(product.price)}</span>
+                            ${product.originalPrice ? `<span class="original-price">${formatZAR(product.originalPrice)}</span>` : ''}
                         </div>
+                        <span class="price-zar">USD $${product.price}</span>
+                        <a href="${getAmazonLink(product.asin)}" target="_blank" class="view-on-amazon" onclick="addToCart(${product.id})">
+                            Buy on Amazon
+                        </a>
                     </div>
                 </div>
             `).join('');
@@ -1413,7 +1324,7 @@
             }
 
             updateCartUI();
-            showToast(`${product.name} added to cart!`);
+            showToast(`${product.name} added to wishlist!`);
             animateCartBadge();
         }
 
@@ -1424,12 +1335,10 @@
             if (cart.length === 0) {
                 cartEmpty.style.display = 'block';
                 cartFooter.style.display = 'none';
-                renderCartItems();
             } else {
                 cartEmpty.style.display = 'none';
                 cartFooter.style.display = 'block';
                 renderCartItems();
-                updateCartTotal();
             }
         }
 
@@ -1441,17 +1350,8 @@
                     </div>
                     <div class="cart-item-details">
                         <h4 class="cart-item-name">${item.name}</h4>
-                        <span class="cart-item-price">$${item.price * item.quantity}</span>
-                        <div class="quantity-controls">
-                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
-                            <span class="qty-value">${item.quantity}</span>
-                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                            <button class="remove-item" onclick="removeFromCart(${item.id})">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </button>
-                        </div>
+                        <span class="cart-item-price">${formatZAR(item.price * item.quantity)}</span>
+                        <a href="${getAmazonLink(item.asin)}" target="_blank" class="cart-item-link">View on Amazon →</a>
                     </div>
                 </div>
             `).join('');
@@ -1460,27 +1360,17 @@
             cartItems.innerHTML = cart.length === 0 ? emptyCart : itemsHtml;
         }
 
-        function updateQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    removeFromCart(productId);
-                } else {
-                    updateCartUI();
-                }
+        function checkoutAmazon() {
+            if (cart.length === 0) return;
+            
+            const amazonLinks = cart.map(item => getAmazonLink(item.asin)).join('\n');
+            
+            if (cart.length === 1) {
+                window.open(getAmazonLink(cart[0].asin), '_blank');
+            } else {
+                alert('Multiple items in wishlist! Opening first item on Amazon.\n\nAll Amazon links:\n' + amazonLinks);
+                window.open(getAmazonLink(cart[0].asin), '_blank');
             }
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartUI();
-            showToast('Item removed from cart');
-        }
-
-        function updateCartTotal() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            cartTotal.textContent = `$${total}`;
         }
 
         function animateCartBadge() {
