@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopzz - Premium Products from Amazon & Temu</title>
+    <title>VOGUE | Premium Fashion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --surface: #141414;
-            --surface-elevated: #1f1f1f;
-            --primary: #e85d04;
-            --primary-hover: #f48c06;
-            --amazon: #FF9900;
-            --temu: #ff4757;
-            --text-primary: #ffffff;
-            --text-secondary: #a3a3a3;
-            --text-muted: #525252;
-            --border: #262626;
-            --success: #22c55e;
+            --bg: #faf9f7;
+            --surface: #ffffff;
+            --surface-elevated: #f5f4f2;
+            --primary: #1a1a1a;
+            --accent: #c9a87c;
+            --accent-light: #e8dcc8;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b6b6b;
+            --text-muted: #9a9a9a;
+            --border: #e5e3df;
+            --success: #2d5a27;
         }
 
         * {
@@ -43,9 +42,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 40px;
         }
 
         @keyframes fadeInUp {
@@ -53,9 +52,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .animate-in {
@@ -63,19 +67,18 @@
             opacity: 0;
         }
 
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
+        .delay-1 { animation-delay: 0.15s; }
+        .delay-2 { animation-delay: 0.3s; }
+        .delay-3 { animation-delay: 0.45s; }
+        .delay-4 { animation-delay: 0.6s; }
 
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            height: 72px;
-            background: rgba(10, 10, 10, 0.9);
+            height: 80px;
+            background: rgba(250, 249, 247, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
@@ -91,48 +94,48 @@
         }
 
         .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--amazon), var(--temu));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon svg {
-            width: 18px;
-            height: 18px;
-            color: white;
+            letter-spacing: 4px;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 48px;
         }
 
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text-primary);
+            transition: width 0.3s;
         }
 
         nav a:hover {
             color: var(--text-primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         .header-actions {
@@ -146,164 +149,133 @@
             height: 20px;
             cursor: pointer;
             color: var(--text-secondary);
+            transition: color 0.3s;
         }
 
-        .cart-btn {
+        .header-actions svg:hover {
+            color: var(--text-primary);
+        }
+
+        .hero {
+            min-height: 100vh;
             position: relative;
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: var(--primary);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
+            background: var(--bg);
+            padding-top: 80px;
         }
 
-        .cart-badge.pulse {
-            animation: pulse 0.3s ease-out;
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+        }
+
+        .hero-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 5vw, 72px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 420px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             background: var(--primary);
             color: white;
-            padding: 12px 28px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 14px;
+            padding: 16px 36px;
+            font-size: 13px;
             text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s;
+            border: 1px solid var(--primary);
         }
 
         .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
+            background: transparent;
+            color: var(--primary);
         }
 
-        .btn-amazon {
-            background: linear-gradient(135deg, #FF9900, #FFB84D);
-            color: #0a0a0a;
-        }
-
-        .btn-amazon:hover {
-            background: linear-gradient(135deg, #FFB84D, #FFCC80);
-        }
-
-        .btn-temu {
-            background: linear-gradient(135deg, #ff4757, #ff6b81);
-            color: white;
-        }
-
-        .btn-temu:hover {
-            background: linear-gradient(135deg, #ff6b81, #ff8a99);
-        }
-
-        .hero {
-            margin-top: 72px;
-            min-height: calc(100vh - 72px);
-            position: relative;
-            display: flex;
+        .btn-outline {
+            display: inline-flex;
             align-items: center;
-            overflow: hidden;
-            background: var(--bg);
+            gap: 10px;
+            background: transparent;
+            color: var(--primary);
+            padding: 16px 36px;
+            font-size: 13px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s;
+            border: 1px solid var(--border);
         }
 
-        .hero::before {
+        .btn-outline:hover {
+            border-color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-image::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(ellipse 80% 50% at 30% -10%, rgba(255, 153, 0, 0.12), transparent),
-                radial-gradient(ellipse 60% 40% at 70% 60%, rgba(255, 71, 87, 0.1), transparent);
-            pointer-events: none;
-        }
-
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0.3;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        .hero-content {
-            position: relative;
+            background: linear-gradient(180deg, transparent 60%, rgba(250,249,247,0.3) 100%);
             z-index: 1;
-            max-width: 700px;
-        }
-
-        .hero-stores {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .amazon-badge {
-            background: rgba(255, 153, 0, 0.15);
-            color: #FF9900;
-        }
-
-        .temu-badge {
-            background: rgba(255, 71, 87, 0.15);
-            color: #ff4757;
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(40px, 6vw, 64px);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, #FF9900, #ff4757);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 480px;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
         }
 
         .hero-stats {
@@ -315,146 +287,126 @@
         }
 
         .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 36px;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--primary);
         }
 
         .stat-label {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .trusted-section {
-            padding: 48px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .trusted-label {
-            text-align: center;
             font-size: 13px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
+            letter-spacing: 1px;
         }
 
-        .store-logos {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 48px;
-        }
-
-        .store-logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .amazon-logo { color: #FF9900; }
-        .temu-logo { color: #ff4757; }
-
-        .categories {
-            padding: 64px 0;
+        .categories-section {
+            padding: 120px 0;
+            background: var(--surface);
         }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
+            text-align: center;
+            margin-bottom: 64px;
         }
 
         .section-header h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -1px;
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 16px;
         }
 
-        .store-tabs {
-            display: flex;
-            gap: 8px;
-            background: var(--surface);
-            padding: 4px;
-            border-radius: 8px;
-        }
-
-        .store-tab {
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            background: transparent;
+        .section-header p {
             color: var(--text-secondary);
+            font-size: 16px;
         }
 
-        .store-tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .store-tab.amazon.active { background: #FF9900; color: #0a0a0a; }
-        .store-tab.temu.active { background: #ff4757; color: white; }
-
-        .category-pills {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .category-pill {
-            padding: 10px 24px;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            background: transparent;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .category-pill:hover {
-            border-color: var(--primary);
-            color: var(--text-primary);
-        }
-
-        .category-pill.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        .products-grid {
+        .category-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
+        .category-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.8;
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            z-index: 2;
+            color: white;
+        }
+
+        .category-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .category-content span {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .featured-section {
+            padding: 120px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
         .product-card {
             background: var(--surface);
-            border-radius: 16px;
+            border-radius: 4px;
             overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .product-card:hover {
             transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(232, 93, 4, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
         }
 
         .product-image {
             position: relative;
-            aspect-ratio: 1;
+            aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--surface-elevated);
         }
@@ -463,64 +415,52 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.5s ease;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
-        .store-tag {
+        .product-tag {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            padding: 6px 10px;
-            border-radius: 4px;
+            top: 16px;
+            left: 16px;
+            padding: 6px 12px;
+            background: var(--surface);
             font-size: 10px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
-        .store-tag.amazon {
-            background: #FF9900;
-            color: #0a0a0a;
-        }
-
-        .store-tag.temu {
-            background: #ff4757;
+        .product-tag.sale {
+            background: var(--accent);
             color: white;
         }
 
         .product-info {
             padding: 20px;
+            text-align: center;
         }
 
         .product-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.4;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
         }
 
         .product-price {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 8px;
         }
 
         .current-price {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .original-price {
@@ -529,326 +469,68 @@
             text-decoration: line-through;
         }
 
-        .price-zar {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .shop-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .shop-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 13px;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .shop-btn.amazon {
-            background: linear-gradient(135deg, #FF9900, #FFB84D);
-            color: #0a0a0a;
-        }
-
-        .shop-btn.amazon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
-        }
-
-        .shop-btn.temu {
-            background: linear-gradient(135deg, #ff4757, #ff6b81);
-            color: white;
-        }
-
-        .shop-btn.temu:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
-        }
-
-        .cart-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 200;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .cart-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 420px;
-            max-width: 100%;
-            height: 100%;
-            background: var(--surface);
-            z-index: 201;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-out;
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid var(--border);
-        }
-
-        .cart-sidebar.active {
-            transform: translateX(0);
-        }
-
-        .cart-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cart-header h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .close-cart {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--surface-elevated);
-            border: none;
-            cursor: pointer;
-        }
-
-        .close-cart svg {
-            width: 18px;
-            height: 18px;
-            color: var(--text-secondary);
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 24px;
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .cart-empty svg {
-            width: 64px;
-            height: 64px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .cart-empty h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .cart-empty p {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .cart-item-image {
-            width: 72px;
-            height: 72px;
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--surface-elevated);
-            flex-shrink: 0;
-        }
-
-        .cart-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .cart-item-details {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cart-item-name {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .cart-item-price {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .cart-item-store {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            width: fit-content;
-        }
-
-        .cart-item-store.amazon { background: rgba(255,153,0,0.2); color: #FF9900; }
-        .cart-item-store.temu { background: rgba(255,71,87,0.2); color: #ff4757; }
-
-        .cart-item-link {
-            font-size: 12px;
-            color: var(--primary);
-            text-decoration: none;
-            margin-top: auto;
-        }
-
-        .cart-footer {
-            padding: 24px;
-            border-top: 1px solid var(--border);
-        }
-
-        .cart-info {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 16px;
-            background: var(--surface-elevated);
-            border-radius: 8px;
-        }
-
-        .cart-info p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #FF9900, #ff4757);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 14px 24px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 300;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .toast svg {
-            width: 18px;
-            height: 18px;
-            color: var(--success);
-        }
-
-        .toast span {
-            font-weight: 500;
-            font-size: 14px;
-        }
-
         .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+            padding: 120px 0;
+            background: var(--primary);
+            color: white;
             text-align: center;
-        }
-
-        .cta-content {
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .cta-content h2 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
             margin-bottom: 16px;
         }
 
         .cta-content p {
-            color: var(--text-secondary);
             font-size: 16px;
-            margin-bottom: 32px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-content .btn-primary {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        .cta-content .btn-primary:hover {
+            background: transparent;
+            color: white;
         }
 
         footer {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            padding: 64px 0 32px;
+            background: var(--surface-elevated);
+            padding: 80px 0 40px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 48px;
-            margin-bottom: 48px;
+            gap: 64px;
+            margin-bottom: 64px;
         }
 
         .footer-brand .logo {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            display: inline-block;
         }
 
         .footer-brand p {
             color: var(--text-secondary);
             font-size: 14px;
-            line-height: 1.7;
-            max-width: 280px;
-            margin-bottom: 24px;
+            line-height: 1.8;
+            max-width: 300px;
         }
 
         .footer-column h4 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .footer-column ul {
@@ -856,13 +538,14 @@
         }
 
         .footer-column li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .footer-column a {
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .footer-column a:hover {
@@ -876,10 +559,9 @@
 
         .newsletter-form input {
             flex: 1;
-            padding: 12px 16px;
-            background: var(--surface-elevated);
+            padding: 14px 18px;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 6px;
             color: var(--text-primary);
             font-size: 14px;
         }
@@ -889,13 +571,19 @@
         }
 
         .newsletter-form button {
-            padding: 12px 20px;
+            padding: 14px 24px;
             background: var(--primary);
-            border: none;
-            border-radius: 6px;
             color: white;
-            font-weight: 600;
+            border: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            opacity: 0.8;
         }
 
         .footer-bottom {
@@ -909,14 +597,20 @@
             font-size: 13px;
         }
 
-        .affiliate-disclaimer {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
         @media (max-width: 1024px) {
+            .hero-split {
+                grid-template-columns: 1fr;
+            }
+            .hero-image {
+                display: none;
+            }
+            .hero-content {
+                padding: 60px 40px;
+            }
             .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .category-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .footer-grid {
@@ -925,370 +619,180 @@
         }
 
         @media (max-width: 768px) {
+            .container { padding: 0 24px; }
             nav { display: none; }
             .hero h1 { font-size: 40px; }
             .products-grid { grid-template-columns: 1fr; }
-            .hero-buttons { flex-direction: column; }
-            .section-header { flex-direction: column; gap: 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .shop-buttons { flex-direction: column; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 0 16px; }
-            .hero h1 { font-size: 32px; }
-            .cart-sidebar { width: 100%; }
+            .category-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-stats { flex-wrap: wrap; gap: 32px; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                </div>
-                shopzz
-            </a>
+            <a href="index.html" class="logo">VOGUE</a>
             <nav>
-                <a href="#">Discover</a>
-                <a href="#products">Products</a>
-                <a href="#cta">Contact</a>
+                <a href="index.html">Home</a>
+                <a href="clothing.html">Clothing</a>
+                <a href="contact.html">Contact</a>
             </nav>
             <div class="header-actions">
-                <div class="cart-btn" id="cartBtn">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
             </div>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-pattern"></div>
-        <div class="container">
+        <div class="hero-split">
             <div class="hero-content">
-                <div class="hero-stores animate-in">
-                    <span class="store-badge amazon-badge">★ Amazon</span>
-                    <span class="store-badge temu-badge">★ Temu</span>
-                </div>
-                <h1 class="animate-in delay-1">Discover Your <span>Style</span></h1>
-                <p class="animate-in delay-2">Curated premium products from Amazon & Temu with the best deals. Shop smart with our tracked affiliate links.</p>
+                <span class="hero-label animate-in">New Collection 2026</span>
+                <h1 class="animate-in delay-1">Redefine Your <span>Style</span></h1>
+                <p class="animate-in delay-2">Discover the latest trends in fashion. Curated collections that speak to your unique personality and elevate your wardrobe.</p>
                 <div class="hero-buttons animate-in delay-3">
-                    <a href="#products" class="btn-primary">Shop Now →</a>
-                    <a href="#cta" class="btn-outline">Contact Us</a>
+                    <a href="clothing.html" class="btn-primary">Shop Now →</a>
+                    <a href="#categories" class="btn-outline">Explore</a>
                 </div>
                 <div class="hero-stats animate-in delay-4">
-                    <div><div class="stat-number">10K+</div><div class="stat-label">Happy Customers</div></div>
-                    <div><div class="stat-number">500+</div><div class="stat-label">Products</div></div>
-                    <div><div class="stat-number">2</div><div class="stat-label">Stores</div></div>
+                    <div><div class="stat-number">50K+</div><div class="stat-label">Customers</div></div>
+                    <div><div class="stat-number">500+</div><div class="stat-label">Styles</div></div>
+                    <div><div class="stat-number">4.9</div><div class="stat-label">Rating</div></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="trusted-section">
-        <div class="container">
-            <p class="trusted-label">Powered By</p>
-            <div class="store-logos">
-                <span class="store-logo amazon-logo">amazon</span>
-                <span class="store-logo temu-logo">temu</span>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&h=1200&fit=crop" alt="Fashion Model">
             </div>
         </div>
     </section>
 
-    <section class="categories" id="products">
+    <section class="categories-section" id="categories">
         <div class="container">
             <div class="section-header">
-                <h2>Featured Products</h2>
-                <div class="store-tabs">
-                    <button class="store-tab amazon active" data-store="amazon">Amazon</button>
-                    <button class="store-tab temu" data-store="temu">Temu</button>
-                </div>
+                <h2>Shop by Category</h2>
+                <p>Find your perfect look</p>
             </div>
-            <div class="category-pills" id="categoryPills" style="margin-bottom: 32px;">
-                <button class="category-pill active" data-category="all">All</button>
-                <button class="category-pill" data-category="electronics">Electronics</button>
-                <button class="category-pill" data-category="clothing">Clothing</button>
-                <button class="category-pill" data-category="accessories">Accessories</button>
-                <button class="category-pill" data-category="home">Home</button>
+            <div class="category-grid">
+                <a href="clothing.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=800&fit=crop" alt="Clothing">
+                    <div class="category-content">
+                        <h3>Clothing</h3>
+                        <span>Explore Collection</span>
+                    </div>
+                </a>
+                <a href="clothing.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop" alt="Dresses">
+                    <div class="category-content">
+                        <h3>Dresses</h3>
+                        <span>Explore Collection</span>
+                    </div>
+                </a>
+                <a href="clothing.html" class="category-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop" alt="Accessories">
+                    <div class="category-content">
+                        <h3>Accessories</h3>
+                        <span>Explore Collection</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured This Week</h2>
+                <p>Handpicked styles just for you</p>
             </div>
             <div class="products-grid" id="productsGrid"></div>
         </div>
     </section>
 
-    <section class="cta-section" id="cta">
+    <section class="cta-section">
         <div class="container">
-            <div class="cta-content animate-in">
-                <h2>Need Help Finding Products?</h2>
-                <p>Contact us for personalized product recommendations from Amazon or Temu.</p>
-                <a href="mailto:contact@shopzz.com" class="btn-primary">Get in Touch →</a>
+            <div class="cta-content">
+                <h2>Join the Vogue Family</h2>
+                <p>Subscribe to receive exclusive offers and style inspiration</p>
+                <a href="contact.html" class="btn-primary">Get in Touch →</a>
             </div>
         </div>
     </section>
-
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <aside class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Your Wishlist</h3>
-            <button class="close-cart" id="closeCart">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <div class="cart-empty" id="cartEmpty">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                <h4>Your wishlist is empty</h4>
-                <p>Add products to compare prices!</p>
-            </div>
-        </div>
-        <div class="cart-footer" id="cartFooter" style="display: none;">
-            <div class="cart-info">
-                <p>Compare prices between Amazon & Temu</p>
-            </div>
-            <button class="checkout-btn" onclick="checkoutAll()">View All on Stores</button>
-        </div>
-    </aside>
-
-    <div class="toast" id="toast">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-        <span id="toastMessage">Added to wishlist!</span>
-    </div>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
-                        </div>
-                        shopzz
-                    </a>
-                    <p>Your trusted destination for premium products from Amazon & Temu. Compare prices and save big!</p>
+                    <a href="index.html" class="logo">VOGUE</a>
+                    <p>Your destination for premium fashion. We curate the finest styles to help you express your unique identity.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Shop</h4>
                     <ul>
-                        <li><a href="#">Amazon Products</a></li>
-                        <li><a href="#">Temu Products</a></li>
-                        <li><a href="#">Deals</a></li>
-                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="clothing.html">New Arrivals</a></li>
+                        <li><a href="clothing.html">Best Sellers</a></li>
+                        <li><a href="clothing.html">Sale</a></li>
+                        <li><a href="clothing.html">All Products</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">FAQs</a></li>
+                        <li><a href="contact.html">Shipping</a></li>
+                        <li><a href="contact.html">Returns</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h4>Newsletter</h4>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Get special offers and updates.</p>
-                    <form class="newsletter-form" onsubmit="return false;">
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Get updates on new arrivals and special offers.</p>
+                    <form class="newsletter-form">
                         <input type="email" placeholder="Your email">
-                        <button type="submit">Subscribe</button>
+                        <button type="submit">Join</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Shopzz. Amazon & Temu Affiliate.</p>
-                <p class="affiliate-disclaimer">As an Amazon & Temu Associate, we earn from qualifying purchases.</p>
+                <p>&copy; 2026 VOGUE Fashion. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        const AMAZON_TAG = 'compar101-20';
-        const TEMU_CODE = 'ehuhzwk9082';
-        const USD_TO_ZAR = 18.5;
-
         const products = [
-            // Amazon Products
-            { id: 1, name: "Sony WH-1000XM5 Wireless Headphones", price: 299, originalPrice: 399, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B09XS7JWHH", url: "https://www.amazon.com/dp/B09XS7JWHH" },
-            { id: 2, name: "Apple Watch Series 9 GPS 45mm", price: 329, originalPrice: 429, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0CHWQH6H8", url: "https://www.amazon.com/dp/B0CHWQH6H8" },
-            { id: 3, name: "Bose QuietComfort Ultra Headphones", price: 349, originalPrice: 449, image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0C8S5GMK7", url: "https://www.amazon.com/dp/B0C8S5GMK7" },
-            { id: 4, name: "Samsung Galaxy Watch 6 Classic", price: 279, originalPrice: 349, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", store: "amazon", asin: "B0C47J3K5Z", url: "https://www.amazon.com/dp/B0C47J3K5Z" },
-            { id: 5, name: "Nike Air Max 270 Running Shoes", price: 109, originalPrice: 149, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop", category: "clothing", store: "amazon", asin: "B09RM5XT9P", url: "https://www.amazon.com/dp/B09RM5XT9P" },
-            { id: 6, name: "Levi's 501 Original Fit Jeans", price: 59, originalPrice: 79, image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop", category: "clothing", store: "amazon", asin: "B07FY5stRY", url: "https://www.amazon.com/dp/B07FY5stRY" },
-            
-            // Temu Products (lower prices)
-            { id: 101, name: "Wireless Bluetooth Earbuds Pro", price: 29, originalPrice: 59, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=600&fit=crop", category: "electronics", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
-            { id: 102, name: "Smart Fitness Tracker Watch", price: 25, originalPrice: 49, image: "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&h=600&fit=crop", category: "electronics", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
-            { id: 103, name: "Vintage Polarized Sunglasses", price: 15, originalPrice: 35, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&h=600&fit=crop", category: "accessories", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
-            { id: 104, name: "Cotton Hoodie Casual Wear", price: 22, originalPrice: 45, image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=600&fit=crop", category: "clothing", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
-            { id: 105, name: "Minimalist Desk Clock", price: 18, originalPrice: 36, image: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=600&h=600&fit=crop", category: "home", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
-            { id: 106, name: "LED Desk Lamp Adjustable", price: 24, originalPrice: 48, image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&h=600&fit=crop", category: "home", store: "temu", url: "https://temu.com/k/ehuhzwk9082" },
+            { id: 1, name: "Elegant Silk Blouse", price: 129, originalPrice: 179, image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=500&h=667&fit=crop", tag: "Sale" },
+            { id: 2, name: "Classic Denim Jacket", price: 189, originalPrice: 249, image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=667&fit=crop", tag: null },
+            { id: 3, name: "Summer Floral Dress", price: 149, originalPrice: null, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&h=667&fit=crop", tag: "New" },
+            { id: 4, name: "Cashmere Sweater", price: 299, originalPrice: 399, image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&h=667&fit=crop", tag: "Sale" },
+            { id: 5, name: "Tailored Trousers", price: 119, originalPrice: null, image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=667&fit=crop", tag: null },
+            { id: 6, name: "Leather Crossbody Bag", price: 179, originalPrice: 229, image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&h=667&fit=crop", tag: "Sale" },
+            { id: 7, name: "Wool Blend Coat", price: 399, originalPrice: null, image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500&h=667&fit=crop", tag: "New" },
+            { id: 8, name: "Linen Blazer", price: 219, originalPrice: 279, image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&h=667&fit=crop", tag: "Sale" },
         ];
 
-        let cart = [];
-        let currentStore = 'amazon';
-        let currentCategory = 'all';
-
-        const productsGrid = document.getElementById('productsGrid');
-        const cartBtn = document.getElementById('cartBtn');
-        const cartSidebar = document.getElementById('cartSidebar');
-        const cartOverlay = document.getElementById('cartOverlay');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartEmpty = document.getElementById('cartEmpty');
-        const cartFooter = document.getElementById('cartFooter');
-        const cartBadge = document.getElementById('cartBadge');
-        const toast = document.getElementById('toast');
-        const toastMessage = document.getElementById('toastMessage');
-        const categoryPills = document.getElementById('categoryPills');
-        const storeTabs = document.querySelectorAll('.store-tab');
-
-        function formatZAR(usd) {
-            return 'R ' + Math.round(usd * USD_TO_ZAR).toLocaleString('en-ZA');
-        }
-
-        function getAmazonLink(product) {
-            return product.url + `?tag=${AMAZON_TAG}`;
-        }
-
-        function getTemuLink() {
-            return `https://temu.com/k/${TEMU_CODE}`;
-        }
-
         function renderProducts() {
-            let filtered = products.filter(p => p.store === currentStore);
-            if (currentCategory !== 'all') {
-                filtered = filtered.filter(p => p.category === currentCategory);
-            }
-
-            productsGrid.innerHTML = filtered.map((product, index) => `
-                <div class="product-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.05}s; opacity: 0;">
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map((product, index) => `
+                <div class="product-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${index * 0.08}s; opacity: 0;">
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" loading="lazy">
-                        <span class="store-tag ${product.store}">${product.store === 'amazon' ? '★ Amazon' : '★ Temu'}</span>
+                        ${product.tag ? `<span class="product-tag ${product.tag.toLowerCase()}">${product.tag}</span>` : ''}
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
                         <div class="product-price">
-                            <span class="current-price">${formatZAR(product.price)}</span>
-                            ${product.originalPrice ? `<span class="original-price">${formatZAR(product.originalPrice)}</span>` : ''}
-                        </div>
-                        <span class="price-zar">USD $${product.price}</span>
-                        <div class="shop-buttons">
-                            <a href="${product.store === 'amazon' ? getAmazonLink(product) : getTemuLink()}" target="_blank" class="shop-btn ${product.store}" onclick="addToCart(${product.id})">
-                                ${product.store === 'amazon' ? 'Buy on Amazon' : 'Buy on Temu'}
-                            </a>
+                            <span class="current-price">R ${product.price * 18.5}</span>
+                            ${product.originalPrice ? `<span class="original-price">R ${product.originalPrice * 18.5}</span>` : ''}
                         </div>
                     </div>
                 </div>
             `).join('');
         }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-
-            updateCartUI();
-            showToast(`${product.name} added!`);
-            animateCartBadge();
-        }
-
-        function updateCartUI() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartBadge.textContent = totalItems;
-
-            if (cart.length === 0) {
-                cartEmpty.style.display = 'block';
-                cartFooter.style.display = 'none';
-            } else {
-                cartEmpty.style.display = 'none';
-                cartFooter.style.display = 'block';
-                renderCartItems();
-            }
-        }
-
-        function renderCartItems() {
-            const itemsHtml = cart.map(item => `
-                <div class="cart-item">
-                    <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
-                    <div class="cart-item-details">
-                        <h4 class="cart-item-name">${item.name}</h4>
-                        <span class="cart-item-price">${formatZAR(item.price * item.quantity)}</span>
-                        <span class="cart-item-store ${item.store}">${item.store.toUpperCase()}</span>
-                        <a href="${item.store === 'amazon' ? getAmazonLink(item) : getTemuLink()}" target="_blank" class="cart-item-link">View on ${item.store === 'amazon' ? 'Amazon' : 'Temu'} →</a>
-                    </div>
-                </div>
-            `).join('');
-            cartItems.innerHTML = itemsHtml;
-        }
-
-        function checkoutAll() {
-            if (cart.length === 0) return;
-            const amazonItem = cart.find(i => i.store === 'amazon');
-            const temuItem = cart.find(i => i.store === 'temu');
-            
-            let msg = 'Opening stores...\n';
-            if (amazonItem) msg += 'Amazon: ' + getAmazonLink(amazonItem) + '\n';
-            if (temuItem) msg += 'Temu: ' + getTemuLink() + '\n';
-            alert(msg);
-            
-            if (amazonItem) window.open(getAmazonLink(amazonItem), '_blank');
-        }
-
-        function animateCartBadge() {
-            cartBadge.classList.remove('pulse');
-            void cartBadge.offsetWidth;
-            cartBadge.classList.add('pulse');
-        }
-
-        function showToast(message) {
-            toastMessage.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        function openCart() {
-            cartSidebar.classList.add('active');
-            cartOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCartFunc() {
-            cartSidebar.classList.remove('active');
-            cartOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        cartBtn.addEventListener('click', openCart);
-        closeCart.addEventListener('click', closeCartFunc);
-        cartOverlay.addEventListener('click', closeCartFunc);
-
-        storeTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                storeTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                currentStore = tab.dataset.store;
-                renderProducts();
-            });
-        });
-
-        categoryPills.addEventListener('click', (e) => {
-            if (e.target.classList.contains('category-pill')) {
-                categoryPills.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
-                e.target.classList.add('active');
-                currentCategory = e.target.dataset.category;
-                renderProducts();
-            }
-        });
 
         renderProducts();
     </script>
